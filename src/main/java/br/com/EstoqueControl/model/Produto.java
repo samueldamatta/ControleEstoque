@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
+@Entity(name = "Produto")
 @Table(name = "produtos")
 public class Produto {
     @Id
@@ -17,6 +17,7 @@ public class Produto {
     private double preco;
     private int quantidadeEstoque;
     private Boolean ativo;
+    // private Fornecedor fornecedor;
 
     public Produto(ProdutoDTO dados) {
         this.id = dados.id();
@@ -24,12 +25,13 @@ public class Produto {
         this.preco = dados.preco();
         this.quantidadeEstoque = dados.quantidadeEstoque();
         this.ativo = true;
+        // this.fornecedor = dados.fornecedor();
     }
 
     public Produto() {
     }
 
-    public void atuaizarInformacoes(ProdutoDTO dados){
+    public void atualizarInformacoes(ProdutoDTO dados){
         if (dados != null) {
             this.id = dados.id();
         }if (dados != null) {
@@ -39,6 +41,9 @@ public class Produto {
         }if (dados != null) {
             this.quantidadeEstoque = dados.quantidadeEstoque();
         }
+        // if (dados != null) {
+        //     this.fornecedor = dados.fornecedor();
+        // }
     }
 
     public void inativar(){
@@ -84,4 +89,12 @@ public class Produto {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
+    
+    // public Fornecedor getFornecedor() {
+    //     return fornecedor;
+    // }
+
+    // public void setFornecedor(Fornecedor fornecedor) {
+    //     this.fornecedor = fornecedor;
+    // }  
 }

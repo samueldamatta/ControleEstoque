@@ -11,30 +11,31 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.EstoqueControl.DTO.ProdutoDTO;
-import br.com.EstoqueControl.Repository.ProdutoRepository;
-import br.com.EstoqueControl.model.Produto;
+import br.com.EstoqueControl.DTO.FornecedorDTO;
+import br.com.EstoqueControl.Repository.FornecedorRepository;
+import br.com.EstoqueControl.model.Fornecedor;
 import jakarta.transaction.Transactional;
 
 @RestController
-@RequestMapping("/produtos")
-public class ProdutoController {
+@RequestMapping("/fornecedor")
+public class FornecedorController {
+
     @Autowired
-    private ProdutoRepository repositorio;
+    private FornecedorRepository repositorio;
 
     @PostMapping
-    public void cadastrarProduto(@RequestBody ProdutoDTO dados){
-        repositorio.save(new Produto(dados));
+    public void cadastrarFornecedor(@RequestBody FornecedorDTO dados){
+        repositorio.save(new Fornecedor(dados));
     }
 
     @GetMapping
-    public ResponseEntity<List<Produto>> listarProdutos(){
+    public ResponseEntity<List<Fornecedor>> listarFornecedores(){
         var lista = repositorio.findAll();
         return ResponseEntity.ok(lista);
     }
 
     @PutMapping
-    public void atualizarProduto(@RequestBody ProdutoDTO dados){
+    public void atualizarProduto(@RequestBody FornecedorDTO dados){
         var produto = repositorio.getReferenceById(dados.id());
         produto.atualizarInformacoes(dados);
     }

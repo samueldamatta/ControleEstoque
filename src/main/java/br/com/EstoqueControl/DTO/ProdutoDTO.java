@@ -1,5 +1,6 @@
 package br.com.EstoqueControl.DTO;
 
+import br.com.EstoqueControl.model.Fornecedor;
 import jakarta.validation.constraints.NotBlank;
 
 public record ProdutoDTO(
@@ -10,5 +11,6 @@ public record ProdutoDTO(
                         @NotBlank
                         double preco,
                         @NotBlank
-                        int quantidadeEstoque) {
+                        int quantidadeEstoque,
+                        Fornecedor fornecedor) {
 }
